@@ -48,3 +48,4 @@ end
 
 # impel gems
 gem 'snooby' # reddit
+gem 'thin'
