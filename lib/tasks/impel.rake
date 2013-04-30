@@ -9,6 +9,8 @@ namespace :impel do
   task poll_reddit: :environment do
     reddit = Snooby::Client.new
     motivations = reddit.r('GetMotivated').posts
+    motivations += reddit.r('MotivationalPics').posts
+    motivations += reddit.r('QuotesPorn').posts
     motivations = motivations.select{ |motivation| image?(motivation.url) }
     motivations.each do |motivation|
       post = Post.where(original_url: "http://reddit.com/" + motivation.permalink).first_or_create do |m|
@@ -33,6 +35,8 @@ namespace :impel do
 
     tumblr = Tumblr::Client.new
     motivations = tumblr.tagged("life-quote")
+    motivations = tumblr.tagged("motivation-quote")
+    motivations = tumblr.tagged("inspirational-quote")
     motivations = motivations.select{ |motivation| motivation["type"] == "photo" && motivation["note_count"] > 3}
     motivations.each do |motivation|
       post = Post.where(original_url: motivation["post_url"]).first_or_create do |m|
