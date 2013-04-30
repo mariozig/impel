@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
     thumb: '340'
   }
 
-  def image_from_url(url)
-    self.image = URI.parse(url)
+  def self.image_from_url(url)
+    URI.parse(url)
   end
 end
