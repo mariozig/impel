@@ -26,4 +26,13 @@ Impel::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => Figaro.env.dev_s3_bucket,
+      :access_key_id => Figaro.env.dev_s3_access_key_id,
+      :secret_access_key => Figaro.env.dev_s3_secret_access_key
+    }
+  }
 end
