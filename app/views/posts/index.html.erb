@@ -1,7 +1,7 @@
-<h1>Posts</h1>
-<% @posts.each do |post| %>
-  <p>
-    <%= post.title.downcase %>
-    <%= image_tag(post.image_url) %>
-  </p>
-<% end %>
+<div id="container" class="">
+  <% @posts.each do |post| %>
+    <div class="post">
+        <a href="<%= post.original_url %>" title="<%= post.title.downcase %>"><%= image_tag(post.image_url) %></a>
+    </div>
+  <% end %>
+</div>
