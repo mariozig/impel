@@ -50,3 +50,4 @@ end
 gem 'snooby' # reddit
 gem 'thin'
 gem 'masonry-rails'
+gem 'tumblr_client'
