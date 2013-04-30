@@ -8,7 +8,7 @@ namespace :impel do
   desc "query reddit's /r/GetMotivated for content"
   task poll_reddit: :environment do
     motivations = []
-    subreddits = %w{GetMotivated QuotesPorn MotivationalPics}
+    subreddits = %w{GetMotivated QuotesPorn MotivationalPics MotivateMe gotmotivated}
 
     reddit = Snooby::Client.new
     subreddits.each{ |sub| motivations += reddit.r(sub).posts }
