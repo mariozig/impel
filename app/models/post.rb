@@ -4,7 +4,6 @@ class Post < ActiveRecord::Base
   has_attached_file :image, styles: {
     thumb: '340'
   }
-  attr_accessor :image_file_name, :image
 
   def image_from_url(url)
     self.image = URI.parse(url)
