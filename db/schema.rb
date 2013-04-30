@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130430043318) do
+ActiveRecord::Schema.define(version: 20130430043723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "posts", force: true do |t|
+    t.string   "image_url"
+    t.string   "title"
+    t.integer  "source_id"
+    t.string   "original_url"
+    t.string   "author_title"
+    t.string   "author_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "raw_blob"
+  end
 
   create_table "sources", force: true do |t|
     t.string   "title"
