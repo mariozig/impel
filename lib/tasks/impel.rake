@@ -7,14 +7,16 @@ require 'tumblr_client'
 namespace :impel do
   desc "query reddit's /r/GetMotivated for content"
   task poll_reddit: :environment do
+    motivations = []
+    subreddits = %w{GetMotivated QuotesPorn MotivationalPics}
+
     reddit = Snooby::Client.new
-    motivations = reddit.r('GetMotivated').posts
-    motivations += reddit.r('MotivationalPics').posts
-    motivations += reddit.r('QuotesPorn').posts
+    subreddits.each{ |sub| motivations += reddit.r(sub).posts }
+
     motivations = motivations.select{ |motivation| image?(motivation.url) }
     motivations.each do |motivation|
-      post = Post.where(original_url: "http://reddit.com/" + motivation.permalink).first_or_create do |m|
-        m.image_url = motivation.url
+      post = Post.where(original_url: "http://reddit.com" + motivation.permalink).first_or_create do |m|
+        m.image_from_url(motivation.url)
         m.title = motivation.title
         m.source = Source.where(title: "reddit").first_or_create
         m.author_title = motivation.author
@@ -33,14 +35,16 @@ namespace :impel do
       config.oauth_token_secret = Figaro.env.tumblr_oauth_token_secret
     end
 
+    motivations = []
+    tags = %w{life-quote motivation-quote inspirational-quote}
+
     tumblr = Tumblr::Client.new
-    motivations = tumblr.tagged("life-quote")
-    motivations = tumblr.tagged("motivation-quote")
-    motivations = tumblr.tagged("inspirational-quote")
+    tags.each{ |tag| motivations += tumblr.tagged(tag) }
+
     motivations = motivations.select{ |motivation| motivation["type"] == "photo" && motivation["note_count"] > 3}
     motivations.each do |motivation|
       post = Post.where(original_url: motivation["post_url"]).first_or_create do |m|
-        m.image_url = motivation["photos"][0]["original_size"]["url"]
+        m.image_from_url(motivation["photos"][0]["original_size"]["url"])
         m.title = motivation["caption"]
         m.source = Source.where(title: "tumblr").first_or_create
         m.author_title = motivation["blog_name"]
