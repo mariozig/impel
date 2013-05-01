@@ -19,15 +19,5 @@ module Impel
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
-    config.paperclip_defaults = {
-      :storage => :s3,
-      :s3_credentials => {
-        :bucket => Figaro.env.s3_bucket,
-        :access_key_id => Figaro.env.s3_access_key_id,
-        :secret_access_key => Figaro.env.s3_secret_access_key
-      }
-    }
-
   end
 end
