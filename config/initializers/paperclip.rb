@@ -1,6 +1,6 @@
 Paperclip::Attachment.default_options[:storage] = :s3
 Paperclip::Attachment.default_options[:s3_credentials] = {
-  :bucket => Figaro.env.s3_bucket,
-  :access_key_id => Figaro.env.s3_access_key_id,
-  :secret_access_key => Figaro.env.s3_secret_access_key
+  :bucket => ENV["S3_BUCKET"],
+  :access_key_id => ENV["S3_ACCESS_KEY_ID"],
+  :secret_access_key => ENV["S3_SECRET_ACCESS_KEY"]
 }
