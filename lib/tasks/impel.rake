@@ -25,7 +25,8 @@ namespace :impel do
           m.raw_blob = motivation.to_yaml
         end
       rescue OpenURI::HTTPError => ex
-        puts "damn it, 404."
+        puts "damn it, HTTPError."
+        puts ex
       end
 
     end
