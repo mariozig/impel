@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+  respond_to :json
+
   def index
-    @posts = Post.order("created_at DESC").page(params[:page]).per(25)
+    @posts = Post.a_page(params[:page])
   end
 end
