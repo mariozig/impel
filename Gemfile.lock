@@ -26,11 +26,16 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.0)
-    atomic (1.1.8)
-    aws-sdk (1.9.3)
+    atomic (1.1.9)
+    aws-sdk (1.9.5)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
+    backbone-on-rails (1.0.0.0)
+      eco
+      ejs
+      jquery-rails
+      rails (>= 3.1)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -44,6 +49,12 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     daemons (1.1.9)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
+    ejs (1.1.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -52,7 +63,7 @@ GEM
       multipart-post (~> 1.1)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
-    figaro (0.6.3)
+    figaro (0.6.4)
       bundler (~> 1.0)
       rails (>= 3, < 5)
     hike (1.2.2)
@@ -73,8 +84,8 @@ GEM
     masonry-rails (0.2.0)
       rails
     mime-types (1.23)
-    minitest (4.7.3)
-    multi_json (1.7.2)
+    minitest (4.7.4)
+    multi_json (1.7.3)
     multipart-post (1.2.0)
     net-http-persistent (2.8)
     nokogiri (1.5.9)
@@ -134,7 +145,7 @@ GEM
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
-    tilt (1.3.7)
+    tilt (1.4.0)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -158,6 +169,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  backbone-on-rails
   coffee-rails (~> 4.0.0)
   figaro
   jbuilder (~> 1.0.1)
