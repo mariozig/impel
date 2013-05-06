@@ -3,6 +3,7 @@ Impel::Application.routes.draw do
   # http://guides.rubyonrails.org/routing.html#using-root
   root 'posts#index'
 
+  get "pages/home"
   namespace :api do
     resources :posts, :only => [:index]
   end
