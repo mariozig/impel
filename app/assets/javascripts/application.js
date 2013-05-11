@@ -29,4 +29,5 @@
 //= require_tree ./routers
 //= require_tree .
 
+// Initializes Foundation's JS
 $(document).foundation();
