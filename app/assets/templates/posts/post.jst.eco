@@ -1,0 +1,3 @@
+<a href="<%= @post.get('original_url') %>">
+  <img src="<%= @post.get('thumb_image_url') %>">
+</a>

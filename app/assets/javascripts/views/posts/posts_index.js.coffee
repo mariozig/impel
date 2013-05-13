@@ -6,5 +6,10 @@ class Impel.Views.PostsIndex extends Backbone.View
     @collection.on('sync', @render, @)
 
   render: ->
-    @$el.html @template(posts: @collection)
+    @$el.html @template()
+    @collection.each(@appendPost)
     @
+
+  appendPost: (post) ->
+    view = new Impel.Views.Post(model: post)
+    $('#posts').append(view.render().el)

@@ -1,6 +1,2 @@
 <h2>Postings</h2>
-<ul>
-<% for post in @posts.models: %>
-  <li><%= post.get('title') %></li>
-<% end %>
-</ul>
+<div id="posts"></div>
