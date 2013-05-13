@@ -8,6 +8,8 @@ class Impel.Views.PostsIndex extends Backbone.View
   render: ->
     @$el.html @template()
     @collection.each(@appendPost)
+    $('#posts').isotope
+      itemSelector: ".post"
     @
 
   appendPost: (post) ->
