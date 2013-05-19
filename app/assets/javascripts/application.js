@@ -21,6 +21,7 @@
 
 //= require underscore
 //= require backbone
+//= require backbone-pageable
 //= require impel
 //= require_tree ../templates
 //= require_tree ./models
