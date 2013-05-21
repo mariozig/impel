@@ -6,9 +6,13 @@
   padding: 3px;
 }
 
-
-.pages > h2 {
+.pages > h2, #post, #social-buttons {
   text-align: center;
+  margin: 0 auto;
+}
+
+#social-buttons {
+  border: 0;
 }
 
 .isotope,

@@ -118,6 +118,8 @@ GEM
     snooby (0.1.5)
       json
       net-http-persistent (>= 2.5)
+    social-buttons (0.3.7)
+      rails (>= 3.0.0)
     sprockets (2.9.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -170,6 +172,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0.rc1)
   sdoc
   snooby
+  social-buttons
   thin
   tumblr_client
   turbolinks
