@@ -1,6 +1,12 @@
 <div id="post">
   <%= render :partial => 'shared/social_buttons' %>
-  <div>
+  <div id="post-image">
     <%= link_to image_tag(@post.image.url(:original)), @post.original_url %>
+  </div>
+  <div id="post-meta">
+    <p>
+      Originally posted to <em><%= @post.source.title.titleize %></em>
+      by <%= link_to @post.author_title, @post.author_url %>.
+    </p>
   </div>
 </div>
