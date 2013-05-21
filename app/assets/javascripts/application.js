@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
+// require turbolinks
 //= require masonry/jquery.masonry
 //= require masonry/jquery.imagesloaded.min
 //= require masonry/modernizr-transitions
