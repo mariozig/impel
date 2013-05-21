@@ -1,11 +1,15 @@
-<center><h2><%= paginate @posts %></h2></center>
+<div class="pages">
+  <h2><%= paginate @posts %></h2>
+</div>
 
 <div id="container" class="">
   <% @posts.each do |post| %>
     <div class="post">
-        <a href="<%= post.original_url %>" title="<%= post.title.downcase %>"><%= image_tag(post.image.url(:thumb)) %></a>
+        <%= link_to image_tag(post.image.url(:thumb)), post_path(post) %>
     </div>
   <% end %>
 </div>
 
-<center><h2><%= paginate @posts %></h2></center>
+<div class="pages">
+  <h2><%= paginate @posts %></h2>
+</div>
