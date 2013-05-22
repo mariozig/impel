@@ -1,5 +1,5 @@
 <div id="post">
-  <%= render :partial => 'shared/social_buttons' %>
+  <%= render partial: 'shared/social_buttons', locals: { post: @post } %>
   <div id="post-image">
     <%= link_to image_tag(@post.image.url(:original)), @post.original_url %>
   </div>
