@@ -1,3 +1,5 @@
+<% content_for :meta, tag('meta', :property => 'og:image', :content => post.image.url(:original)) %>
+
 <table id="social-buttons">
   <tr>
     <td><%= pinit_button(url: post_url(post), media: post.image.url(:original), description: "Impel Images") %></td>
