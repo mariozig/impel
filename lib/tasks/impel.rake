@@ -68,13 +68,24 @@ namespace :impel do
 
   desc "query pinterest for content"
   task poll_pinterest: :environment do
+    # First we monkey patch Pinteresting because EC2 is apparently banned Pinterest and returns
+    # 403 error codes 100% of the time
+    module Pinteresting
+      class Pins
+        def self.search(search_term, count=50)
+          puts "Searching Pinterest for #{count} #{search_term}..."
+          a = Mechanize.new
+          a.set_proxy Figaro.env.proxy_ip_address, 80
+          retrieve_pins(search_term, a, count)
+        end
+      end
+    end
 
     pins = []
     search_params = %w{motivation-quote inspirational-quote inspirational-quotes famous-quotes}
 
     search_params.each do |param|
       pins += Pinteresting::Pins.search(param)
-      sleep 3
     end
 
     # If results suck, we could filter on repins or likes... or repins AND likes!
