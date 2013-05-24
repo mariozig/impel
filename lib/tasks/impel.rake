@@ -74,6 +74,7 @@ namespace :impel do
 
     search_params.each do |param|
       pins += Pinteresting::Pins.search(param)
+      sleep 3
     end
 
     # If results suck, we could filter on repins or likes... or repins AND likes!
