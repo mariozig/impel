@@ -49,9 +49,10 @@ end
 
 # impel gems
 gem 'snooby' # reddit
+gem 'tumblr_client'
+gem 'pinteresting', :git => 'git://github.com/mariozig/pinteresting.git'
 gem 'thin'
 gem 'masonry-rails'
-gem 'tumblr_client'
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
