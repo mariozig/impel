@@ -46,5 +46,8 @@ Impel::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'posts#index'
-  resources :posts, :only => [:show]
+
+  resources :posts do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 end
