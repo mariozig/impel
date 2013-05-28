@@ -68,8 +68,9 @@ namespace :impel do
 
   desc "query pinterest for content"
   task poll_pinterest: :environment do
-    # First we monkey patch Pinteresting because EC2 is apparently banned Pinterest and returns
-    # 403 error codes 100% of the time
+    # We monkey patch the Pinteresting gem and force mechanize to use a proxy
+    # because Pinterest has apparently banned what looks like ALL EC2 based IPs from
+    # accessing parts of their site (search) and returns a 403 error
     module Pinteresting
       class Pins
         def self.search(search_term, count=50)
@@ -82,7 +83,7 @@ namespace :impel do
     end
 
     pins = []
-    search_params = %w{motivation-quote inspirational-quote inspirational-quotes famous-quotes}
+    search_params = %w{motivation-quote inspirational-quote inspirational-quotes words-to-live-by}
 
     search_params.each do |param|
       pins += Pinteresting::Pins.search(param)
