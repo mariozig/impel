@@ -76,7 +76,7 @@ namespace :impel do
         def self.search(search_term, count=50)
           puts "Searching Pinterest for #{count} #{search_term}..."
           a = Mechanize.new
-          a.set_proxy Figaro.env.proxy_ip_address, 80
+          a.set_proxy Figaro.env.proxy_ip_address, Figaro.env.proxy_port
           retrieve_pins(search_term, a, count)
         end
       end
