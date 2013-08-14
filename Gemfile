@@ -50,7 +50,10 @@ end
 # impel gems
 gem 'snooby' # reddit
 gem 'tumblr_client'
-gem 'pinteresting', :git => 'git://github.com/mariozig/pinteresting.git'
+# gem 'pinteresting', :git => 'git://github.com/mariozig/pinteresting.git'
+# gem 'pinteresting', :path => '/Users/mario/opensource/pinteresting'
+gem 'john_stamos', git: 'git://github.com/mariozig/john_stamos.git'
+# gem 'john_stamos', :path => '/Users/mario/opensource/john_stamos'
 gem 'thin'
 gem 'masonry-rails'
 gem 'figaro'

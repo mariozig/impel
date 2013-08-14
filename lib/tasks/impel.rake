@@ -3,7 +3,7 @@ include ApplicationHelper
 
 require 'snooby'
 require 'tumblr_client'
-require 'pinteresting'
+require 'john_stamos'
 
 namespace :impel do
   desc "query reddit for content"
@@ -68,38 +68,27 @@ namespace :impel do
 
   desc "query pinterest for content"
   task poll_pinterest: :environment do
-    # We monkey patch the Pinteresting gem and force mechanize to use a proxy
-    # because Pinterest has apparently banned what looks like ALL EC2 based IPs from
-    # accessing parts of their site (search) and returns a 403 error
-    module Pinteresting
-      class Pins
-        def self.search(search_term, count=50)
-          puts "Searching Pinterest for #{count} #{search_term}..."
-          a = Mechanize.new
-          a.set_proxy Figaro.env.proxy_ip_address, Figaro.env.proxy_port
-          retrieve_pins(search_term, a, count)
-        end
-      end
-    end
 
     pins = []
     search_params = %w{motivation-quote inspirational-quote inspirational-quotes words-to-live-by}
 
+    pinterest_client = JohnStamos::Client.new(proxy: Figaro.env.proxy_address)
+
     search_params.each do |param|
-      pins += Pinteresting::Pins.search(param)
+      pins += pinterest_client.search_pins(param, limit: 10)
     end
 
     # If results suck, we could filter on repins or likes... or repins AND likes!
-    pins.select!{ |pin| pin[:likes].to_i > 10 }
+    pins.select!{ |pin| pin.like_count.to_i > 10 && !pin.video? }
 
     pins.each do |pin|
       begin
-        post = Post.where(original_url: pin[:url]).first_or_create do |p|
-          p.title = pin[:description]
+        post = Post.where(original_url: pin.url).first_or_create do |p|
+          p.title = pin.description
           p.source = Source.where(title: "pinterest").first_or_create
-          p.author_title = pin[:pinner].gsub('/', '')
-          p.author_url = "http://pinterest.com" + pin[:pinner]
-          p.image = image_from_url(pin[:image_url])
+          p.author_title = pin.pinner.full_name
+          p.author_url = pin.pinner.url
+          p.image = image_from_url(pin.image)
           p.raw_blob = pin.to_yaml
         end
       rescue OpenURI::HTTPError => ex
