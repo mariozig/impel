@@ -1,11 +1,10 @@
-GIT
-  remote: git://github.com/mariozig/john_stamos.git
-  revision: b4403d026789701f5bcdd4d52ed38f0a74905522
+PATH
+  remote: /Users/mario/opensource/john_stamos
   specs:
     john_stamos (0.0.1)
       json
       launchy
-      nokogiri
+      mechanize
       rest-client
 
 GEM
@@ -55,6 +54,8 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     daemons (1.1.9)
+    domain_name (0.5.12)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -67,6 +68,8 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     hike (1.2.3)
+    http-cookie (1.0.1)
+      domain_name (~> 0.5)
     i18n (0.6.5)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
@@ -84,12 +87,23 @@ GEM
       treetop (~> 1.4.8)
     masonry-rails (0.2.0)
       rails
-    mime-types (1.23)
+    mechanize (2.7.2)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0.0)
+      mime-types (~> 1.17, >= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
+    mime-types (1.24)
     minitest (4.7.5)
     multi_json (1.7.9)
     multipart-post (1.2.0)
+    net-http-digest_auth (1.4)
     net-http-persistent (2.9)
     nokogiri (1.5.10)
+    ntlm-http (0.1.1)
     oauth (0.4.7)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
@@ -166,7 +180,11 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unf (0.1.2)
+      unf_ext
+    unf_ext (0.0.6)
     uuidtools (2.1.4)
+    webrobots (0.1.1)
     zurb-foundation (4.0.9)
       sass (>= 3.2.0)
 
