@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/mario/opensource/john_stamos
+GIT
+  remote: git://github.com/mariozig/john_stamos.git
+  revision: 4d822292ad8438845f7c86245c1e27567a764d57
   specs:
     john_stamos (0.0.1)
       json
