@@ -48,10 +48,10 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # impel gems
-gem 'snooby' # reddit
-gem 'tumblr_client'
+gem 'snooby' # reddit client
+gem 'tumblr_client' # tumblr client
 gem 'thin'
-gem 'john_stamos'
+gem 'john_stamos' # pinterest client
 gem 'masonry-rails'
 gem 'figaro'
 gem 'paperclip'
