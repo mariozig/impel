@@ -70,12 +70,12 @@ namespace :impel do
   task poll_pinterest: :environment do
 
     pins = []
-    search_params = %w{motivation-quote inspirational-quote inspirational-quotes words-to-live-by}
+    search_params = %w{get-motivated motivation-quote inspirational-quote inspirational-quotes words-to-live-by}
 
     pinterest_client = JohnStamos::Client.new(proxy: Figaro.env.proxy_address)
 
     search_params.each do |param|
-      pins += pinterest_client.search_pins(param, limit: 10)
+      pins += pinterest_client.search_pins(param, limit: 100)
     end
 
     # If results suck, we could filter on repins or likes... or repins AND likes!
